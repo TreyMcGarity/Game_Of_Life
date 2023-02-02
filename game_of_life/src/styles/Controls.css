@@ -1,19 +1,19 @@
 .controls {
     display: flex;
     flex-direction: column;
-    height: 450px;
-    margin: 0 10px;
-    padding: 5px 20px;
+    /* height: 450px; */
+    /* margin: 0 10px; */
+    /* padding: 5px 20px; */
     background-color: black;
     border: 1px solid white;
     border-radius: 40px;
 }
 
 .button {
-    width: 75px;
-    height: 35px;
-    margin: 10px;
-    font-size: 25px;
+    /* width: 75px; */
+    /* height: 35px; */
+    /* margin: 10px; */
+    /* font-size: 25px; */
     background-color: white;
     border: 1px solid black;
     border-radius: 25px;
