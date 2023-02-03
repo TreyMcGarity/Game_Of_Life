@@ -1,7 +1,8 @@
 .presets {
-    height: 400px;
-    margin: 0 10px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin: 5% 25%;
     color: white;
     background-color: black;
     border: 1px solid white;
