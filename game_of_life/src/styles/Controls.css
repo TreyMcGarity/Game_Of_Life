@@ -1,32 +1,30 @@
 .controls {
     display: flex;
-    flex-direction: row;
-    width: 400px;
-    margin: 20px 25%;
-    padding: 5px 20px;
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 40px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .button {
-    width: 75px;
-    height: 35px; 
-    margin: 10px;
+    height: 40px; 
+    width: 300px;
+    margin: 5px 0;
     font-size: 25px;
     background-color: white;
-    border: 1px solid black;
-    border-radius: 25px;
 }
 
-img {
-    width: 75px;
-    height: 75px;
+.controls img {
+    width: 100px;
+    height: 100px;
     margin: 10px;
-    border-radius: 70%;
+    border-radius: 100%; 
 }
 
-.button:hover {
+.controls img:hover {
+    box-shadow: 2px 2px 15px white;
+}
+
+button:hover {
     box-shadow: 2px 2px 15px white;
 }
 
@@ -34,20 +32,24 @@ img {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: white;
 }
     
 .menu {
     display: none;
     position: absolute;
-    width: 150px;
-    box-shadow: 0 0 20px 2px white;
+    width: 200px;
+    margin: 0 50px;
     color: white;
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid grey;
 }
 
-p:hover {
+.controls p {
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.controls p:hover {
     box-shadow: 2px 2px 15px white;
 }
 

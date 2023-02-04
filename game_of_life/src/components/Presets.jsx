@@ -8,7 +8,7 @@ import '../styles/Presets.css';
 const Presets = props => {
     return (
         <div className="presets">
-            <h3>Preset</h3>
+            <h3>Presets</h3>
             <div className="preset one"
                  onClick={props.randomSeed}
             >

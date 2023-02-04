@@ -1,11 +1,13 @@
 .presets {
     display: flex;
     flex-direction: column;
-    justify-self: center;
-    margin: 5% 25%;
+    align-self: center;
+    align-items: center;
+    width: 500px;
+    height: 450px;
+    margin: 5%;
     color: white;
     background-color: black;
-    border: 1px solid white;
 }
 
 h3 {
@@ -14,13 +16,13 @@ h3 {
 
 .preset {
     display: flex;
-    width: 150px;
+    width: 50%;
     padding: 15px;
     font-size: 20px;
     line-height: 2; 
 }
 
-img {
+.preset img {
     width: 50px;
     height: 50px;
     padding: 0 5px;
