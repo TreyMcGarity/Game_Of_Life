@@ -247,22 +247,23 @@ class Game extends React.Component {
         return (
             <div className="game">
                 <div className="top">
-                    <h4>Generations: {this.state.generations}</h4>
                     <h2>Conway's Game of Life</h2>
+                    <h4>Generations: {this.state.generations}</h4>
                 </div>
                 <div className="main">
+
+                    <Grid 
+                        grid={this.state.grid}
+                        rows={this.rows}
+                        columns={this.columns}
+                        selectCell={this.selectCell}
+                    />
                     <Controls 
                         play={this.play}
                         pause={this.pause}
                         clear={this.clear}
                         fastforward={this.fastforward}
                         gridSize={this.gridSize}
-                    />
-                    <Grid 
-                        grid={this.state.grid}
-                        rows={this.rows}
-                        columns={this.columns}
-                        selectCell={this.selectCell}
                     />
                     <Presets 
                         randomSeed={this.randomSeed}

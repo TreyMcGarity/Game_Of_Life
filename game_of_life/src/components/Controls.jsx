@@ -1,7 +1,7 @@
 import React from 'react';
-import Play from '../utils/play_button.jpg';
-import Fastforward from '../utils/fastforward_button.jpg';
-import Pause from '../utils/pause_button.png';
+import Play from '../utils/playBtn.png';
+import Fastforward from '../utils/fastBtn.png';
+import Pause from '../utils/pauseBtn.png';
 import '../styles/Controls.css';
 
 const Controls = props => {
@@ -19,28 +19,28 @@ const Controls = props => {
     
     return (
         <div className="controls">
-            <img
-                onClick={props.play}
-                src={Play} 
-                alt=''
-            />
-            <img
-                onClick={props.fastforward}
-                src={Fastforward} 
-                alt=''
-            />
-            <img
-                onClick={props.pause}
-                src={Pause}
-                alt='' 
-            />
+            <div>
+                <img
+                    onClick={props.pause}
+                    src={Pause}
+                    alt='' 
+                />
+                <img
+                    onClick={props.play}
+                    src={Play} 
+                    alt=''
+                />
+                <img
+                    onClick={props.fastforward}
+                    src={Fastforward} 
+                    alt=''
+                />
+            </div>
             <div 
                 className="button"
                 onClick={props.clear}
             >Clear</div>
-            <div 
-                className="button popout"
-            >Size
+            <div className="button popout">Size
                 <div className="menu">
                     <p onClick={makeGridSmall}>Small</p>
                     <p onClick={makeGridRegular}>Regular</p>
