@@ -3,6 +3,12 @@
     line-height: 0;
 }
 
+@media (max-width: 600px) {
+    .grid {
+        margin: 0 5%;
+    }
+} 
+
 .small {
     width: 160px;
 }
