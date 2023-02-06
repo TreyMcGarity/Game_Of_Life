@@ -10,6 +10,13 @@
     background-color: black;
 }
 
+@media (max-width: 600px) {
+    .presets {
+        width: 100%;
+        margin: 0;
+    }
+} 
+
 h3 {
     text-align: center;
 }

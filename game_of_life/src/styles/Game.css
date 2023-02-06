@@ -12,6 +12,13 @@
     color: white;
 }
 
+@media (max-width: 600px) {
+    .top {
+        display: flex;
+        flex-direction: column;
+    }
+} 
+
 .main {
     display: flex;
     flex-direction: column;
