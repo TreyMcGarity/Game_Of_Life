@@ -12,14 +12,20 @@
     color: white;
 }
 
+.main {
+    display: flex;
+    justify-content: left;
+    flex-direction: row-reverse;
+}
+
 @media (max-width: 600px) {
     .top {
         display: flex;
         flex-direction: column;
     }
-} 
 
-.main {
-    display: flex;
-    flex-direction: column;
-}
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+} 

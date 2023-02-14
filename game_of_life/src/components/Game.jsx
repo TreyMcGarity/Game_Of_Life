@@ -251,26 +251,27 @@ class Game extends React.Component {
                     <h4>Generations: {this.state.generations}</h4>
                 </div>
                 <div className="main">
-
                     <Grid 
                         grid={this.state.grid}
                         rows={this.rows}
                         columns={this.columns}
                         selectCell={this.selectCell}
                     />
-                    <Controls 
-                        play={this.play}
-                        pause={this.pause}
-                        clear={this.clear}
-                        fastforward={this.fastforward}
-                        gridSize={this.gridSize}
-                    />
-                    <Presets 
-                        randomSeed={this.randomSeed}
-                        oscillatorSeed={this.oscillatorSeed}
-                        gliderSeed={this.gliderSeed}
-                        spaceShipSeed={this.spaceShipSeed}
-                    />
+                    <div>
+                        <Controls 
+                            play={this.play}
+                            pause={this.pause}
+                            clear={this.clear}
+                            fastforward={this.fastforward}
+                            gridSize={this.gridSize}
+                        />
+                        <Presets 
+                            randomSeed={this.randomSeed}
+                            oscillatorSeed={this.oscillatorSeed}
+                            gliderSeed={this.gliderSeed}
+                            spaceShipSeed={this.spaceShipSeed}
+                        />
+                    </div>
                 </div>
                 
             </div>
