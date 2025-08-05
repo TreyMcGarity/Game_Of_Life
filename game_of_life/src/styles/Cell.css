@@ -1,8 +1,6 @@
 .cell {
-    display: inline-block;       
+    display: inline-block;
     border: 1px solid white;
-    width: 15px;
-    height: 15px;
     margin-left: -1px;
     margin-bottom: -1px;
 }

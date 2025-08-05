@@ -5,49 +5,31 @@ import Pause from '../utils/pauseBtn.png';
 import '../styles/Controls.css';
 
 const Controls = props => {
-    const makeGridSmall = () => {
-        props.gridSize("small")
-    }
-
-    const makeGridRegular = () => {
-        props.gridSize("regular")
-    }
-
-    const makeGridLarge = () => {
-        props.gridSize("large")
-    }
     
     return (
-        <div className="controls">
-            <div>
-                <img
-                    onClick={props.pause}
-                    src={Pause}
-                    alt='' 
-                />
-                <img
-                    onClick={props.play}
-                    src={Play} 
-                    alt=''
-                />
-                <img
-                    onClick={props.fastforward}
-                    src={Fastforward} 
-                    alt=''
-                />
-            </div>
-            <div 
-                className="button"
-                onClick={props.clear}
-            >Clear</div>
-            <div className="button popout">Size
-                <div className="menu">
-                    <p onClick={makeGridSmall}>Small</p>
-                    <p onClick={makeGridRegular}>Regular</p>
-                    <p onClick={makeGridLarge}>Large</p>
-                </div>
-            </div>
+    <div className="controls">
+        <div className="playback">
+            <img onClick={props.pause} src={Pause} alt="Pause" />
+            <img onClick={props.play} src={Play} alt="Play" />
+            <img onClick={props.fastforward} src={Fastforward} alt="Fast Forward" />
         </div>
+
+        <div className="button" onClick={props.clear}>Clear</div>
+
+        <div className="slider-container">
+            <label htmlFor="gridSize">
+                Grid Size: {props.rows} x {props.columns}
+            </label>
+            <input
+                type="range"
+                id="gridSize"
+                min="10"
+                max="50"
+                value={props.rows}
+                onChange={(e) => props.gridSize(parseInt(e.target.value, 10))}
+            />
+        </div>
+    </div>
     )
 }
 

@@ -2,46 +2,47 @@ import React from 'react';
 import Cell from './Cell';
 import '../styles/Grid.css';
 
-const Grid = props => {
-    let rowsArray = [];
+const Grid = (props) => {
+    const rowsArray = [];
 
     const handleGrid = () => {
         for (let i = 0; i < props.rows; i++) {
-            for(let j = 0; j < props.columns; j++) {
-                let cellId = i + "-" + j;
-                let status = props.grid[i][j] ? "cell live" : "cell dead"
+            for (let j = 0; j < props.columns; j++) {
+                const cellId = `${i}-${j}`;
+                const status = props.grid[i][j] ? "cell live" : "cell dead";
 
-                rowsArray.push (
-                    <Cell key={cellId}
+                rowsArray.push(
+                    <Cell
+                        key={cellId}
                         cellId={cellId}
                         status={status}
                         row={i}
                         column={j}
                         selectCell={props.selectCell}
+                        cellSize={props.cellSize} // Pass size for dynamic styling
                     />
-                )
+                );
             }
         }
         return rowsArray;
-    }
+    };
 
-    const handleGridSize = () => {
-        if (props.rows === 10 && props.columns === 10) {
-            return "grid small"
-        }
-        else if (props.rows === 25 && props.columns === 25) {
-            return "grid regular"
-        }
-        else if (props.rows === 40 && props.columns === 40) {
-            return "grid large"
-        }
-    }
-    
+    // Dynamic grid style: keep total grid width fixed
+    const gridSizePx = 600; // total width/height for grid container
+    const cellSize = gridSizePx / props.rows;
+
+    const gridStyle = {
+        display: "grid",
+        gridTemplateColumns: `repeat(${props.columns}, ${cellSize}px)`,
+        gridTemplateRows: `repeat(${props.rows}, ${cellSize}px)`,
+        margin: "0 auto"
+    };
+
     return (
-        <div className={handleGridSize()}>
+        <div style={gridStyle}>
             {handleGrid()}
         </div>
-    )
-}
+    );
+};
 
 export default Grid;

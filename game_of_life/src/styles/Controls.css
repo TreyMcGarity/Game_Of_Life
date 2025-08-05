@@ -2,57 +2,105 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 1.2rem;
+    /* background: rgba(0, 0, 0, 0.5); */
+    padding: 1rem;
+    border-radius: 12px;
 }
 
-.button {
-    height: 40px; 
-    width: 300px;
-    margin: 5px 0;
-    font-size: 25px;
-    background-color: white;
+.playback {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .controls img {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border-radius: 100%; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
 }
 
 .controls img:hover {
-    box-shadow: 2px 2px 15px white;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px white;
+}
+
+.button {
+    height: 40px;
+    width: 200px;
+    margin: 0;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
 }
 
 .button:hover {
-    box-shadow: 2px 2px 15px white;
+    box-shadow: 0px 0px 15px white;
+    transform: scale(1.05);
 }
 
-.popout {
-    position: relative;
+.slider-container {
     display: flex;
     flex-direction: column;
-}
-    
-.menu {
-    display: none;
-    position: absolute;
-    width: 200px;
-    margin: 0 50px;
+    align-items: center;
+    gap: 0.4rem;
     color: white;
-    background-color: black;
-    border: 1px solid grey;
 }
 
-.controls p {
-    margin: 10px 0;
-    padding: 10px 0;
+.slider-container input[type="range"] {
+    width: 180px;
 }
 
-.controls p:hover {
-    box-shadow: 2px 2px 15px white;
+.slider-container input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 6px;
+    background: black; /* Track color */
+    border-radius: 3px;
+    outline: none;
 }
 
-.popout:hover .menu {
-    display: block;
+/* Track styling */
+.slider-container input[type="range"]::-webkit-slider-runnable-track {
+    background: black; /* Track color */
+    border-radius: 3px;
+}
+
+/* Thumb styling */
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: black; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white; /* Optional contrast */
+    margin-top: -5px; /* Center thumb vertically */
+}
+
+/* Firefox support */
+.slider-container input[type="range"]::-moz-range-track {
+    background: black;
+    border-radius: 3px;
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
 }

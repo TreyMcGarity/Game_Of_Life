@@ -174,25 +174,31 @@ class Game extends React.Component {
     }
 
     gridSize = (size) => {
-        switch (size) {
-            case "small":
-                this.rows = 10
-                this.columns = 10
-            break;
-            case "regular":
-                this.rows = 25
-                this.columns = 25
-            break;
-            case "large":
-                this.rows = 40
-                this.columns = 40
-            break;
-            default:
-                this.rows = 25
-                this.columns = 25
-        }
+        this.rows = size;
+        this.columns = size;
         this.clear();
     }
+
+    // gridSize = (size) => {
+    //     switch (size) {
+    //         case "small":
+    //             this.rows = 10
+    //             this.columns = 10
+    //         break;
+    //         case "regular":
+    //             this.rows = 25
+    //             this.columns = 25
+    //         break;
+    //         case "large":
+    //             this.rows = 40
+    //             this.columns = 40
+    //         break;
+    //         default:
+    //             this.rows = 25
+    //             this.columns = 25
+    //     }
+    //     this.clear();
+    // }
 
     run = () => {
         let grid = this.state.grid
@@ -258,12 +264,14 @@ class Game extends React.Component {
                         selectCell={this.selectCell}
                     />
                     <div>
-                        <Controls 
+                        <Controls
                             play={this.play}
                             pause={this.pause}
                             clear={this.clear}
                             fastforward={this.fastforward}
                             gridSize={this.gridSize}
+                            rows={this.rows}
+                            columns={this.columns}
                         />
                         <Presets 
                             randomSeed={this.randomSeed}
