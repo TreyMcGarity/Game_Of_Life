@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Game_Of_Life/static/css/main.a05bc6f8.css",
+    "main.js": "/Game_Of_Life/static/js/main.eaab5541.js",
+    "static/media/fastBtn.png": "/Game_Of_Life/static/media/fastBtn.adecdab03629dc9f04a7.png",
+    "static/media/playBtn.png": "/Game_Of_Life/static/media/playBtn.99ddd8810cc546f71839.png",
+    "static/media/pauseBtn.png": "/Game_Of_Life/static/media/pauseBtn.1a029dcb5877582080b6.png",
+    "static/media/question_mark.png": "/Game_Of_Life/static/media/question_mark.5e87dd2c2e3e08f966f7.png",
+    "index.html": "/Game_Of_Life/index.html",
+    "main.a05bc6f8.css.map": "/Game_Of_Life/static/css/main.a05bc6f8.css.map",
+    "main.eaab5541.js.map": "/Game_Of_Life/static/js/main.eaab5541.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a05bc6f8.css",
+    "static/js/main.eaab5541.js"
+  ]
+}
