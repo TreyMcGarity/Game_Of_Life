@@ -32,6 +32,7 @@ const Grid = (props) => {
     const cellSize = gridSizePx / props.rows;
 
     const gridStyle = {
+        "--cell-size": `${cellSize}px`,
         display: "grid",
         gridTemplateColumns: `repeat(${props.columns}, ${cellSize}px)`,
         gridTemplateRows: `repeat(${props.rows}, ${cellSize}px)`,
@@ -39,7 +40,7 @@ const Grid = (props) => {
     };
 
     return (
-        <div style={gridStyle}>
+        <div className="grid-board" style={gridStyle}>
             {handleGrid()}
         </div>
     );

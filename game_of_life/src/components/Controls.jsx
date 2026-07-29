@@ -1,20 +1,31 @@
 import React from 'react';
-import Play from '../utils/playBtn.png';
-import Fastforward from '../utils/fastBtn.png';
-import Pause from '../utils/pauseBtn.png';
 import '../styles/Controls.css';
 
 const Controls = props => {
+    const mainControlLabel = props.isRunning ? 'Pause simulation' : 'Play simulation';
+    const mainControlMark = props.isRunning ? '❚❚' : '▶';
     
     return (
     <div className="controls">
-        <div className="playback">
-            <img onClick={props.pause} src={Pause} alt="Pause" />
-            <img onClick={props.play} src={Play} alt="Play" />
-            <img onClick={props.fastforward} src={Fastforward} alt="Fast Forward" />
+        <div className="playback" role="group" aria-label="Simulation controls">
+            <button
+                className="icon-button"
+                onClick={props.rewind}
+                aria-label="Rewind one generation"
+                type="button"
+                disabled={!props.canRewind}
+            >
+                <span className="control-mark">&lt;&lt;</span>
+            </button>
+            <button className="icon-button" onClick={props.togglePlayPause} aria-label={mainControlLabel} type="button">
+                <span className="control-mark" aria-hidden="true">{mainControlMark}</span>
+            </button>
+            <button className="icon-button" onClick={props.fastforward} aria-label="Fast forward simulation" type="button">
+                <span className="control-mark" aria-hidden="true">&gt;&gt;</span>
+            </button>
         </div>
 
-        <div className="button" onClick={props.clear}>Clear</div>
+        <button className="button" onClick={props.clear} type="button">Reset Grid</button>
 
         <div className="slider-container">
             <label htmlFor="gridSize">

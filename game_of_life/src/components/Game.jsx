@@ -22,8 +22,14 @@ class Game extends React.Component {
             // number of cycles, simulation runs through
             generations: 0,
             // inital grid with all cells dead
-            grid: makeEmptyGrid(this.rows, this.columns) 
+            grid: makeEmptyGrid(this.rows, this.columns),
+            isRunning: false,
+            history: []
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     selectCell = (row, col) => {
@@ -152,16 +158,43 @@ class Game extends React.Component {
         this.speed = 100
         clearInterval(this.interval)
         this.interval = setInterval(this.run, this.speed)
+        this.setState({ isRunning: true })
     }
 
     fastforward = () => {
-		this.speed = 10;
-		clearInterval(this.interval)
-        this.interval = setInterval(this.run, this.speed)
+        this.pause();
+        this.run();
 	}
 
     pause = () => {
 		clearInterval(this.interval);
+		this.setState({ isRunning: false })
+    }
+
+    togglePlayPause = () => {
+        if (this.state.isRunning) {
+            this.pause();
+            return;
+        }
+
+        this.play();
+    }
+
+    rewind = () => {
+        this.pause();
+        this.setState((prevState) => {
+            if (prevState.history.length === 0) {
+                return null;
+            }
+
+            const previousGrid = prevState.history[prevState.history.length - 1];
+
+            return {
+                grid: previousGrid,
+                generations: Math.max(prevState.generations - 1, 0),
+                history: prevState.history.slice(0, -1)
+            };
+        });
     }
     
     clear = () => {
@@ -169,7 +202,9 @@ class Game extends React.Component {
         let emptyGrid = makeEmptyGrid(this.rows, this.columns)
         this.setState({
             grid: emptyGrid,
-            generations: 0
+            generations: 0,
+            isRunning: false,
+            history: []
         })
     }
 
@@ -201,52 +236,58 @@ class Game extends React.Component {
     // }
 
     run = () => {
-        let grid = this.state.grid
-        let newGrid = copyGrid(this.state.grid)
+        this.setState((prevState) => {
+            let grid = prevState.grid;
+            let newGrid = copyGrid(prevState.grid);
 
-        for (let i = 0; i < this.rows; i++) {
-            for(let j = 0; j < this.columns; j++) {
-                let count = 0
-                // i and j cannot be negative indexes then check
-                // if neighbors are live and increment count if they are
-                if (i > 0) {
-                    if (grid[i - 1][j]) count++;
-                }
-                if (i > 0 && j > 0) {
-                    if (grid[i - 1][j - 1]) count++;
-                }
-                if (i > 0 && j < this.columns - 1) {
-                    if (grid[i - 1][j + 1]) count++;
-                }
-                if (j < this.columns - 1) {
-                    if (grid[i][j + 1]) count++;
-                }
-                if (j > 0) {
-                    if (grid[i][j - 1]) count++;
-                }
-                if (i < this.rows - 1) {
-                    if (grid[i + 1][j]) count++;
-                }    
-                if (i < this.rows - 1 && j > 0) {
-                    if (grid[i + 1][j - 1]) count++;
-                }
-                if (i < this.rows - 1 && j < this.columns - 1) {
-                    if (grid[i + 1][j + 1]) count++;
-                }
-                //based on count set cell to live or dead
-                if (grid[i][j] && (count < 2 || count > 3)) {
-                    newGrid[i][j] = false;
-                }
-                if (!grid[i][j] && count === 3) {
-                    newGrid[i][j] = true;
+            for (let i = 0; i < this.rows; i++) {
+                for(let j = 0; j < this.columns; j++) {
+                    let count = 0;
+                    // i and j cannot be negative indexes then check
+                    // if neighbors are live and increment count if they are
+                    if (i > 0) {
+                        if (grid[i - 1][j]) count++;
+                    }
+                    if (i > 0 && j > 0) {
+                        if (grid[i - 1][j - 1]) count++;
+                    }
+                    if (i > 0 && j < this.columns - 1) {
+                        if (grid[i - 1][j + 1]) count++;
+                    }
+                    if (j < this.columns - 1) {
+                        if (grid[i][j + 1]) count++;
+                    }
+                    if (j > 0) {
+                        if (grid[i][j - 1]) count++;
+                    }
+                    if (i < this.rows - 1) {
+                        if (grid[i + 1][j]) count++;
+                    }
+                    if (i < this.rows - 1 && j > 0) {
+                        if (grid[i + 1][j - 1]) count++;
+                    }
+                    if (i < this.rows - 1 && j < this.columns - 1) {
+                        if (grid[i + 1][j + 1]) count++;
+                    }
+                    //based on count set cell to live or dead
+                    if (grid[i][j] && (count < 2 || count > 3)) {
+                        newGrid[i][j] = false;
+                    }
+                    if (!grid[i][j] && count === 3) {
+                        newGrid[i][j] = true;
+                    }
                 }
             }
-        }
-        this.setState({
-            // set new grid to state and increment generations(cycle)
-            grid: newGrid,
-            generations: this.state.generations + 1
-          });        
+
+            const nextHistory = [...prevState.history, copyGrid(grid)].slice(-500);
+
+            return {
+                // set new grid to state and increment generations(cycle)
+                grid: newGrid,
+                generations: prevState.generations + 1,
+                history: nextHistory
+            };
+        });
     }
 
     render() {
@@ -263,15 +304,17 @@ class Game extends React.Component {
                         columns={this.columns}
                         selectCell={this.selectCell}
                     />
-                    <div>
+                    <div className="side-panel">
                         <Controls
-                            play={this.play}
-                            pause={this.pause}
+                            togglePlayPause={this.togglePlayPause}
+                            rewind={this.rewind}
                             clear={this.clear}
                             fastforward={this.fastforward}
                             gridSize={this.gridSize}
                             rows={this.rows}
                             columns={this.columns}
+                            isRunning={this.state.isRunning}
+                            canRewind={this.state.history.length > 0}
                         />
                         <Presets 
                             randomSeed={this.randomSeed}

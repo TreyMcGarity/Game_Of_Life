@@ -1,5 +1,25 @@
 .App {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem 3rem;
   text-align: center;
-  /* background: linear-gradient(322deg, rgba(0,181,157,1) 0%, rgba(0,0,0,1) 71%); */
-  background-color: rgb(1, 88, 66);
+  animation: fade-up 700ms ease-out;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 680px) {
+  .App {
+    padding: 1.1rem 0.75rem 2rem;
+  }
 }

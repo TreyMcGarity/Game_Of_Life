@@ -1,22 +1,16 @@
-.grid {
-    margin: 0 5%;
-    line-height: 0;
+.grid-board {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface-strong);
+    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.28);
+    width: min(90vw, 600px);
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
 }
 
-@media (max-width: 600px) {
-    .grid {
-        margin: 0;
+@media (max-width: 680px) {
+    .grid-board {
+        width: min(95vw, 600px);
     }
-} 
-
-.small {
-    width: 160px;
-}
-
-.regular {
-    width: 400px;
-}
-
-.large {
-    width: 630px;
 }

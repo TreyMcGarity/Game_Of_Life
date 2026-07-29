@@ -2,11 +2,36 @@
     display: flex;
     justify-content: center;
     text-align: left;
-    /* margin: 25px; */
+    margin-top: 1.25rem;
 } 
 
 .rules {
-    padding: 50px;
-    color: white;
-    background-color: black;
+    width: min(100%, 1024px);
+    padding: 1.4rem 1.5rem;
+    color: var(--text-main);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.rules h2 {
+    margin-top: 0;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.rules p,
+.rules li {
+    color: var(--text-muted);
+}
+
+.rules strong {
+    color: var(--text-main);
+}
+
+@media (max-width: 680px) {
+    .rules {
+        padding: 1rem;
+    }
 }
